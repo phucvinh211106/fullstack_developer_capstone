@@ -10,7 +10,6 @@ jobs:
   python-lint:
     name: Python Lint
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -29,7 +28,6 @@ jobs:
   javascript-lint:
     name: JavaScript Lint
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -50,7 +48,6 @@ jobs:
   build-and-test:
     name: Build and Test
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
