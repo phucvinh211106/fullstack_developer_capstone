@@ -2,6 +2,8 @@
 import json
 import logging
 
+import requests
+
 from django.http import JsonResponse
 from django.contrib.auth import login, authenticate, logout
 from django.views.decorators.csrf import csrf_exempt
@@ -99,10 +101,10 @@ def get_all_car_makes(request):
 
     return JsonResponse(car_makes, safe=False)
 
-import requests
-from django.views.decorators.http import require_GET
 
-
+# ==========================
+# GET ALL DEALERS
+# ==========================
 @require_GET
 def get_dealerships(request):
     try:
@@ -127,6 +129,10 @@ def get_dealerships(request):
             "error": "Unable to fetch dealerships"
         }, status=500)
 
+
+# ==========================
+# GET DEALERS BY STATE
+# ==========================
 @require_GET
 def get_dealers_by_state(request, state):
     try:
@@ -134,6 +140,7 @@ def get_dealers_by_state(request, state):
             url = "http://127.0.0.1:3030/fetchDealers"
         else:
             from urllib.parse import quote
+
             url = (
                 "http://127.0.0.1:3030/fetchDealers/"
                 + quote(state, safe="")
@@ -153,6 +160,7 @@ def get_dealers_by_state(request, state):
             "status": 500,
             "error": "Unable to filter dealerships"
         }, status=500)
+
 
 # ==========================
 # GET DEALER DETAILS
@@ -237,6 +245,10 @@ def get_dealer_reviews(request, dealer_id):
             "error": "Unable to retrieve reviews"
         }, status=500)
 
+
+# ==========================
+# ADD REVIEW
+# ==========================
 @csrf_exempt
 @require_POST
 def add_review(request):
