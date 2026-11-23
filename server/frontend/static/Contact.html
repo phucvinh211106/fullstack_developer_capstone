@@ -1,0 +1,117 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact Us | Cars Dealership</title>
+
+  <link rel="stylesheet" href="/static/bootstrap.min.css">
+  <link rel="stylesheet" href="/static/style.css">
+
+  <style>
+    .contact-container {
+      max-width: 950px;
+      margin: 45px auto;
+      padding: 24px;
+    }
+
+    .contact-card {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      gap: 30px;
+      padding: 30px;
+      border: 1px solid #ddd;
+      border-radius: 12px;
+      background: #fff;
+    }
+
+    .contact-image {
+      width: 35%;
+      max-width: 260px;
+      height: auto;
+    }
+
+    .contact-details {
+      flex: 1;
+      font-size: 18px;
+    }
+
+    .contact-details p {
+      margin-bottom: 15px;
+    }
+
+    @media (max-width: 768px) {
+      .contact-card {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .contact-image {
+        width: 65%;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav class="navbar navbar-expand-lg navbar-light"
+       style="background-color: darkturquoise; min-height: 90px;">
+    <div class="container-fluid">
+      <h2 class="me-4">Dealerships</h2>
+
+      <div class="navbar-nav">
+        <a class="nav-link" href="/">Home</a>
+        <a class="nav-link" href="/about">About Us</a>
+        <a class="nav-link active" aria-current="page" href="/contact">
+          Contact Us
+        </a>
+      </div>
+    </div>
+  </nav>
+
+  <main class="contact-container">
+    <h1 class="text-center mb-4">Contact Us</h1>
+
+    <div class="card contact-card">
+      <img
+        class="contact-image"
+        src="/static/contactus.png"
+        alt="Contact Cars Dealership"
+      >
+
+      <div class="contact-details">
+        <h2>Get in Touch</h2>
+
+        <p>
+          Have questions about our dealerships or customer reviews?
+          Our team is here to help.
+        </p>
+
+        <p>
+          <strong>Address:</strong><br>
+          123 Automotive Avenue, New York, NY, USA
+        </p>
+
+        <p>
+          <strong>Phone:</strong><br>
+          <a href="tel:+12125550123">+1 (212) 555-0123</a>
+        </p>
+
+        <p>
+          <strong>Email:</strong><br>
+          <a href="mailto:contact@example.com">
+            contact@example.com
+          </a>
+        </p>
+
+        <p>
+          <strong>Business Hours:</strong><br>
+          Monday - Friday: 9:00 AM - 6:00 PM
+        </p>
+      </div>
+    </div>
+  </main>
+</body>
+</html>
