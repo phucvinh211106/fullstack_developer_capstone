@@ -7,7 +7,48 @@ on:
   workflow_dispatch:
 
 jobs:
+  python-lint:
+    name: Python Lint
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install Python Linter
+        run: pip install ruff
+
+      - name: Run Linter
+        run: ruff check server/djangoapp --select E4,E7,E9,F63,F7,F82
+
+  javascript-lint:
+    name: JavaScript Lint
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+
+      - name: Install React dependencies
+        working-directory: server/frontend
+        run: npm ci
+
+      - name: Run Linter
+        working-directory: server/frontend
+        run: npx eslint src --ext .js,.jsx --max-warnings 100
+
   build-and-test:
+    name: Build and Test
     runs-on: ubuntu-latest
 
     steps:
