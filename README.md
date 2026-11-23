@@ -1,5 +1,7 @@
 
-# Cars Dealership - Full Stack Development Capstone
+# fullstack_developer_capstone
+
+## Project Name: Cars Dealership - Full Stack Development Capstone
 
 A full-stack web application developed as part of the IBM Full Stack Software Developer Capstone Project.
 
