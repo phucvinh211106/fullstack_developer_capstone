@@ -127,3 +127,16 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+# Local credentials and test artifacts
+server/cookies.txt
+server/login_payload.json
+server/loginuser
+server/logoutuser
+server/django_server
+server/analyzereview
+server/getallcarmakes
+server/getalldealers
+server/getdealerbyid
+server/getdealerreviews
+server/getdealersbyState

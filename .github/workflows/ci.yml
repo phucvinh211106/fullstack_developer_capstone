@@ -1,0 +1,55 @@
+
+name: Cars Dealership CI
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install Django dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r server/requirements.txt
+
+      - name: Check Django project
+        working-directory: server
+        run: python manage.py check
+
+      - name: Check Django migrations
+        working-directory: server
+        run: python manage.py makemigrations --check --dry-run
+
+      - name: Run Django tests
+        working-directory: server
+        run: python manage.py test djangoapp
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+
+      - name: Install React dependencies
+        working-directory: server/frontend
+        run: npm ci
+
+      - name: Build React application
+        working-directory: server/frontend
+        env:
+          CI: "false"
+        run: npm run build
+
+      - name: CI completed successfully
+        run: echo "Cars Dealership CI completed successfully"
